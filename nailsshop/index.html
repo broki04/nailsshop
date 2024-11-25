@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nails Shop</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <h2>Nails Shop</h2>
+
+        <nav class="navbar">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#main">Strona główna</a></li>
+            <li class="nav-item">
+              <a href="#products">Produkty</a>
+            </li>
+            <li class="nav-item"><a href="#contact">Kontakt</a></li>
+            <li class="nav-item">
+              <a href="./src/admin-panel/apanel.php?list"
+                >Panel administracyjny</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="main">
+        <h2>Witamy w naszym sklepie z produktami do paznokci!</h2>
+
+        <div class="content">
+          <p>
+            Jesteśmy <b>pasjonatami</b> pięknych paznokci i dbamy o to, aby
+            każdy mógł się poczuć wyjątkowo, dbając o swoje dłonie.
+          </p>
+          <p>
+            Nasz sklep oferuje <b>szeroki</b> wachlarz produktów do manicure i
+            pedicure.
+          </p>
+          <p>
+            Gwarantujemy, że zadowoloną one profesjonalistów, jak i osoby, które
+            dopiero zaczynają swoją przygodę z pielęgnacją paznokci.
+          </p>
+          <p>
+            Oferujemy wyłącznie wysokiej jakości produkty, które umożliwiają Ci
+            stworzenie trwałego, eleganckiego manicure w zaciszu własnego domu.
+          </p>
+        </div>
+
+        <div class="section-end"></div>
+      </div>
+
+      <div id="products">
+        <h2>Produkty</h2>
+
+        <div class="content">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam,
+            perferendis.
+          </p>
+        </div>
+
+        <div class="section-end"></div>
+      </div>
+
+      <div id="contact">
+        <h2>Kontakt</h2>
+
+        <div class="content">
+          <p>Potrzebujesz się z nami skontaktować?</p>
+          <p>Nasz adres e-mail: <b>kontakt@nailsshop.pl</b>.</p>
+          <p>Numer telefonu: <b>+48 111 222 333</b>. (pon-pt, 09:00 - 17:00)</p>
+          <p>
+            Adres siedziby: Nails Shop, ul. Pięciomorgowa 22, 00-001 Warszawa,
+            Polska
+          </p>
+
+          <div class="section-end"></div>
+
+          <h3>Formularz kontaktowy</h3>
+
+          <div class="contact-form">
+            <form
+              action="./src/contact/contact.php"
+              method="post"
+              class="form-class"
+            >
+              <div class="form-item">
+                <label for="name">Imię:</label>
+                <input
+                  type="text"
+                  placeholder="Imię..."
+                  id="form-name"
+                  name="name"
+                  required
+                />
+              </div>
+
+              <div class="form-item">
+                <label for="mail">Adres e-mail:</label>
+                <input
+                  type="email"
+                  placeholder="Adres e-mail..."
+                  id="form-mail"
+                  name="mail"
+                  required
+                />
+              </div>
+
+              <div class="form-item">
+                <label for="contents">Treść:</label>
+                <textarea
+                  placeholder="Treść..."
+                  id="form-contents"
+                  name="contents"
+                  required
+                ></textarea>
+              </div>
+
+              <input
+                type="submit"
+                value="Wyślij zgłoszenie"
+                name="button"
+                class="btn"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>Strona stworzona przez: <b>XXXX</b>.</p>
+      </footer>
+    </div>
+
+    <script>
+      function isFormEmpty(form) {
+        const inputs = form.elements;
+
+        for (let i = 0; i < inputs.length; i++) {
+          const input = inputs[i];
+          if (
+            input.tagName === "INPUT" ||
+            input.tagName === "TEXTAREA" ||
+            input.tagName === "SELECT"
+          ) {
+            if (!input.disabled && input.value.trim() === "") {
+              return true;
+            }
+          }
+        }
+
+        return false;
+      }
+
+      const btn = document.querySelector(".btn");
+      btn.addEventListener("click", () => {
+        let _confirm = confirm("Czy napewno chcesz wysłać to zgłoszenie?");
+
+        if (_confirm) {
+          const _form = document.querySelector(".form-class");
+          if (isFormEmpty(_form)) {
+            alert("Formularz kontaktowy nie został wypełniony do końca!");
+            return (window.location = "./index.html");
+          } else {
+            alert("Wiadomość do firmy wysłana - odświeżanie strony...");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
